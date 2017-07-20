@@ -1,5 +1,5 @@
 {
-  "name": "graph",
+  "name": "@mauriciopoppe/graph",
   "version": "0.1.0",
   "description": "A graph theory library",
   "keywords": [
@@ -15,7 +15,8 @@
   "module": "dist/graph.es6.js",
   "typings": "dist/types/graph.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!dist/docs"
   ],
   "author": "Mauricio Poppe <mauricio.poppe@gmail.com>",
   "repository": {
