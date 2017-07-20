@@ -1,7 +1,7 @@
 # Graph
 
 [![Node version](https://img.shields.io/node/v/@mauriciopoppe/graph.svg?style=flat)](http://nodejs.org/download/)
-[![Build Status](https://travis-ci.org/{ORG-or-USERNAME}/{REPO-NAME}.png?branch=master)](https://travis-ci.org/{ORG-or-USERNAME}/{REPO-NAME})
+[![Build Status](https://travis-ci.org/mauriciopoppe/graph.png?branch=master)](https://travis-ci.org/mauriciopoppe/graph)
 
 > WIP
 
