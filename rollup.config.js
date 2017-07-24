@@ -4,23 +4,32 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 
 const pkg = require('./package.json')
 
-export default {
-  entry: `compiled/index.js`,
-  targets: [
-    { dest: pkg.main, moduleName: 'graph', format: 'umd' },
-    { dest: pkg.module, format: 'es' }
-  ],
-  sourceMap: true,
-  external: [],
-  plugins: [
-    // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
-    commonjs(),
-    // Allow node_modules resolution, so you can use 'external' to control
-    // which external modules to include in the bundle
-    // https://github.com/rollup/rollup-plugin-node-resolve#usage
-    resolve(),
-
-    // Resolve source maps to the original source
-    sourceMaps()
-  ]
-}
+export default [
+  {
+    entry: `.compiled/index.js`,
+    targets: [
+      { dest: pkg.main, moduleName: 'graph', format: 'umd' },
+      { dest: pkg.module, format: 'es' }
+    ],
+    sourceMap: true,
+    external: [],
+    plugins: [
+      resolve(),
+      commonjs(),
+      sourceMaps()
+    ]
+  },
+  {
+    entry: `.compiled-es5/index.js`,
+    targets: [
+      { dest: pkg['main:es5'], moduleName: 'graph', format: 'umd' },
+    ],
+    sourceMap: true,
+    external: [],
+    plugins: [
+      resolve(),
+      commonjs(),
+      sourceMaps()
+    ]
+  }
+]

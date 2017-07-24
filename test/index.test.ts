@@ -1,4 +1,4 @@
-import { Graph } from '../src/index'
+import Graph from '../src/index'
 
 describe('Graph', () => {
   let g

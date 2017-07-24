@@ -1,6 +1,5 @@
 # Graph
 
-
 [![npm status](http://img.shields.io/npm/v/@mauriciopoppe/graph.svg)](https://www.npmjs.org/package/@mauriciopoppe/graph)
 [![Build Status](https://travis-ci.org/mauriciopoppe/graph.svg?branch=master)](https://travis-ci.org/mauriciopoppe/graph)
 [![dependency status](https://david-dm.org/mauriciopoppe/graph.svg)](https://david-dm.org/mauriciopoppe/graph)
@@ -8,8 +7,10 @@
 
 > WIP
 
-A fork of the awesome https://github.com/cpettitt/graphlib, the library is completely rewritten
-in typescript and it has no dependencies!
+A fork of the awesome https://github.com/cpettitt/graphlib with the following characteristics:
+
+- written in TypeScript
+- `Graph` class extends `EventEmitter` ([`eventemitter3`](https://github.com/primus/eventemitter3))
 
 ## Installation
 
@@ -17,20 +18,12 @@ in typescript and it has no dependencies!
 npm install @mauriciopoppe/graph
 ```
 
-## Comparison with other libraries
-
-| feature\library                              | **graph** | [graphlib](https://github.com/cpettitt/graphlib) | [graph.js](https://github.com/mhelvens/graph.js) | [ngraph.graph](https://github.com/anvaka/ngraph.graph) |
-| --                         | -- | -- | -- | -- |
-| directed/undirected graphs | ✔  | ✔  | ✔  | ✔  |
-| multigraphs                | ✔  | ✔  |    | ✔  |
-| compound graphs            | ✔  | ✔  |    |    |
-| evented                    | ✔  |    | ✔  | ✔  |
-| algorithms                 |    | ✔  |    |    |
-
-Also take a look at http://anvaka.github.io/graph-drawing-libraries/#/all
-
 ## Usage
 
-See the docs
+See the `examples`
+
+## API
+
+https://mauriciopoppe.github.io/graph/
 
 2017 MIT © Mauricio Poppe

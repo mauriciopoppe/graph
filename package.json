@@ -12,6 +12,7 @@
     "undirected"
   ],
   "main": "dist/graph.umd.js",
+  "main:es5": "dist/graph.es5.umd.js",
   "module": "dist/graph.es6.js",
   "typings": "dist/types/graph.d.ts",
   "files": [
@@ -30,7 +31,7 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+    "build": "tsc && tsc -p tsconfig.es5.json && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
     "start": "tsc-watch --onSuccess \"rollup -c\"",
     "test": "jest",
     "test:watch": "jest --watch",

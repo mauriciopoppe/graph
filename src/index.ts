@@ -28,9 +28,24 @@ export interface Edge {
   name?: string
 }
 
-export class Graph extends eventEmitter.EventEmitter {
+export default class Graph extends eventEmitter.EventEmitter {
+  /**
+   * True if the graph is directed, see http://mathworld.wolfram.com/DirectedGraph.html
+   * @default true
+   */
   private _isDirected: boolean
+
+  /**
+   * True if the graph is a multigraph, see http://mathworld.wolfram.com/Multigraph.html
+   * @default false
+   */
   private _isMultigraph: boolean
+
+  /**
+   * True if the graph is compound e.g. when there are parent-child
+   * relationship between nodes
+   * @default false
+   */
   private _isCompound: boolean
 
   private _nodes: Map<N, any>
@@ -48,6 +63,12 @@ export class Graph extends eventEmitter.EventEmitter {
   private _edgeObjs: Map<E, Edge>
   private _listeners: Map<string, Set<(...args: Array<any>) => void>>
 
+  /**
+   * @param opts `GraphOptions`
+   *    opts.directed boolean
+   *    opts.multigraph boolean
+   *    opts.compound boolean
+   */
   constructor(opts: GraphOptions = {}) {
     super()
     this._isDirected = opts.hasOwnProperty('directed')
@@ -302,7 +323,7 @@ export class Graph extends eventEmitter.EventEmitter {
 
   setPath(path: Array<N>, value?: any): Graph {
     path.reduce((prev, cur) => {
-      if (arguments.length > 1) {
+      if (typeof value !== 'undefined') {
         this.setEdge(prev, cur, value)
       } else {
         this.setEdge(prev, cur)
