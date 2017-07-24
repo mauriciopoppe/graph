@@ -1,6 +1,15 @@
-const DEFAULT_EDGE_NAME = "\x00"
-const GRAPH_NODE = "\x00"
-const EDGE_KEY_DELIM = "\x01"
+import eventEmitter from 'eventemitter3'
+
+const DEFAULT_EDGE_NAME = '\x00'
+const GRAPH_NODE = '\x00'
+const EDGE_KEY_DELIM = '\x01'
+
+const Events = {
+  SET_NODE: 'setNode',
+  REMOVE_NODE: 'removeNode',
+  SET_EDGE: 'setEdge',
+  REMOVE_EDGE: 'removeEdge'
+}
 
 // node
 export type N = string
@@ -19,7 +28,7 @@ export interface Edge {
   name?: string
 }
 
-export class Graph {
+export class Graph extends eventEmitter.EventEmitter {
   private _isDirected: boolean
   private _isMultigraph: boolean
   private _isCompound: boolean
@@ -37,15 +46,17 @@ export class Graph {
   private _successors: Map<N, Map<N, number>>
 
   private _edgeObjs: Map<E, Edge>
+  private _listeners: Map<string, Set<(...args: Array<any>) => void>>
 
   constructor(opts: GraphOptions = {}) {
-    this._isDirected = opts.hasOwnProperty("directed")
+    super()
+    this._isDirected = opts.hasOwnProperty('directed')
       ? Boolean(opts.directed)
       : true
-    this._isMultigraph = opts.hasOwnProperty("multigraph")
+    this._isMultigraph = opts.hasOwnProperty('multigraph')
       ? Boolean(opts.multigraph)
       : false
-    this._isCompound = opts.hasOwnProperty("compound")
+    this._isCompound = opts.hasOwnProperty('compound')
       ? Boolean(opts.compound)
       : false
 
@@ -65,6 +76,8 @@ export class Graph {
     this._successors = new Map<N, Map<N, number>>()
 
     this._edgeObjs = new Map<E, Edge>()
+
+    this._listeners = new Map<string, Set<(...args: Array<any>) => void>>()
   }
 
   isDirected(): boolean {
@@ -107,10 +120,12 @@ export class Graph {
   setNode(node: N, value?: any): Graph {
     if (this._nodes.has(node)) {
       this._nodes.set(node, value)
+      this.emit(Events.SET_NODE, node, value, true)
       return this
     }
 
     this._nodes.set(node, value)
+
     if (this._isCompound) {
       this._parent.set(node, GRAPH_NODE)
       this._children.set(node, new Set<N>())
@@ -123,6 +138,7 @@ export class Graph {
     this._outEdges.set(node, new Map<string, Edge>())
     this._predecessors.set(node, new Map<N, number>())
     this._successors.set(node, new Map<N, number>())
+    this.emit(Events.SET_NODE, node, value)
     return this
   }
 
@@ -167,11 +183,12 @@ export class Graph {
 
     this._successors.delete(node)
     this._predecessors.delete(node)
+    this.emit(Events.REMOVE_NODE, node)
   }
 
   setParent(node: N, parent?: N): Graph {
     if (!this.isCompound()) {
-      throw new Error("Cannot set parent in a non-compound graph")
+      throw new Error('Cannot set parent in a non-compound graph')
     }
 
     if (!parent) {
@@ -302,7 +319,7 @@ export class Graph {
     let value: any
     let valueSpecified = false
     const arg0: Edge = args[0]
-    if (arg0 !== null && typeof arg0 === "object" && "v" in arg0) {
+    if (arg0 !== null && typeof arg0 === 'object' && 'v' in arg0) {
       v = arg0.v
       w = arg0.w
       name = arg0.name
@@ -321,15 +338,18 @@ export class Graph {
     }
 
     const e = edgeArgsToId(this.isDirected(), v, w, name)
+    const edgeObj = edgeArgsToObj(this.isDirected(), v, w, name)
+
     if (this._edgeObjs.has(e)) {
       if (valueSpecified) {
         this._edges.set(e, value)
+        this.emit(Events.SET_EDGE, edgeObj, value, true)
       }
       return this
     }
 
-    if (typeof name !== "undefined" && !this.isMultigraph()) {
-      throw new Error("cannot set a named edge when multigraph = false")
+    if (typeof name !== 'undefined' && !this.isMultigraph()) {
+      throw new Error('cannot set a named edge when multigraph = false')
     }
 
     this.setNode(v)
@@ -337,7 +357,6 @@ export class Graph {
 
     this._edges.set(e, value)
 
-    const edgeObj = edgeArgsToObj(this.isDirected(), v, w, name)
     v = edgeObj.v
     w = edgeObj.w
     Object.freeze(edgeObj)
@@ -348,6 +367,7 @@ export class Graph {
     ;(this._inEdges.get(w) as Map<E, Edge>).set(e, edgeObj)
     ;(this._outEdges.get(v) as Map<E, Edge>).set(e, edgeObj)
 
+    this.emit(Events.SET_EDGE, edgeObj, value)
     return this
   }
 
@@ -385,6 +405,7 @@ export class Graph {
       decrementOrRemoveEntry(this._successors.get(v) as Map<N, number>, w)
       ;(this._inEdges.get(w) as Map<E, Edge>).delete(e)
       ;(this._outEdges.get(v) as Map<E, Edge>).delete(e)
+      this.emit(Events.REMOVE_EDGE, edge)
     }
     return this
   }

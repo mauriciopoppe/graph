@@ -41,7 +41,7 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "prettier --write --no-semi",
+      "prettier --write --no-semi --single-quote",
       "git add"
     ]
   },
@@ -93,6 +93,7 @@
     "rimraf": "^2.6.1",
     "rollup": "^0.45.2",
     "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-jest": "^20.0.7",
@@ -104,5 +105,8 @@
     "typedoc": "^0.7.1",
     "typescript": "^2.4.2",
     "validate-commit-msg": "^2.12.2"
+  },
+  "dependencies": {
+    "eventemitter3": "^2.0.3"
   }
 }
