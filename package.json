@@ -38,7 +38,8 @@
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "commit": "git-cz",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "deploy": "gh-pages -d dist/docs"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -85,6 +86,7 @@
     "commitizen": "^2.9.6",
     "cross-env": "^5.0.1",
     "cz-conventional-changelog": "^2.0.0",
+    "gh-pages": "^1.0.0",
     "husky": "^0.14.3",
     "jest": "^20.0.4",
     "lint-staged": "^4.0.2",

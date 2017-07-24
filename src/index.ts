@@ -101,6 +101,9 @@ export default class Graph extends eventEmitter.EventEmitter {
     this._listeners = new Map<string, Set<(...args: Array<any>) => void>>()
   }
 
+  /**
+   * 
+   */
   isDirected(): boolean {
     return this._isDirected
   }
