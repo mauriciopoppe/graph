@@ -8,8 +8,6 @@
         "sourceMap": true,
         "declaration": true,
         "allowSyntheticDefaultImports": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
         "declarationDir": "dist/types",
         "outDir": ".compiled",
         "typeRoots": [

@@ -102,7 +102,7 @@ export default class Graph extends eventEmitter.EventEmitter {
   }
 
   /**
-   * 
+   *
    */
   isDirected(): boolean {
     return this._isDirected

@@ -20,7 +20,7 @@ npm install @mauriciopoppe/graph
 
 ## Usage
 
-See the `examples`
+See the [`examples`](./test/examples/)
 
 ## API
 
