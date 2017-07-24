@@ -39,7 +39,7 @@
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "commit": "git-cz",
     "precommit": "lint-staged",
-    "deploy": "gh-pages -d dist/docs"
+    "deploy": "touch dist/docs/.nojekyll && gh-pages -d dist/docs"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
