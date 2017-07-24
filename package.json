@@ -12,7 +12,7 @@
     "undirected"
   ],
   "main": "dist/graph.umd.js",
-  "main:es5": "dist/graph.es5.umd.js",
+  "browser": "dist/graph.es5.umd.js",
   "module": "dist/graph.es6.js",
   "typings": "dist/types/graph.d.ts",
   "files": [

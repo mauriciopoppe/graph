@@ -22,7 +22,7 @@ export default [
   {
     entry: `.compiled-es5/index.js`,
     targets: [
-      { dest: pkg['main:es5'], moduleName: 'graph', format: 'umd' },
+      { dest: pkg.browser, moduleName: 'graph', format: 'umd' },
     ],
     sourceMap: true,
     external: [],
