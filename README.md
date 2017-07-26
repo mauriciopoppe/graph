@@ -20,7 +20,7 @@ npm install @mauriciopoppe/graph
 
 ## Usage
 
-See the [`examples`](https://github.com/mauriciopoppe/graph/tree/master/test/examples)
+See the [`examples`](https://github.com/mauriciopoppe/graph/tree/master/examples)
 
 ## API
 
