@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
+import uglify from 'rollup-plugin-uglify'
 
 const pkg = require('./package.json')
 
@@ -29,7 +30,8 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      sourceMaps()
+      sourceMaps(),
+      uglify(),
     ]
   }
 ]
