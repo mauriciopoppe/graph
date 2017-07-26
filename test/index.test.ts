@@ -74,10 +74,6 @@ describe('Graph', () => {
     })
   })
 
-  // TODO: filterNodes
-  //
-  // TODO: setNodes
-
   describe('setNode', () => {
     it("creates the node if it isn't part of the graph", () => {
       g.setNode('a')
