@@ -1,6 +1,6 @@
 # List of examples
 
-- [graph operations](./directed.test.ts)
-- [undirected graph](./undirected.test.ts)
-- [multigraph](./multigraph.test.ts)
-- [multigraph (self loops)](./multigraph-self.test.ts)
+- [graph operations](https://github.com/mauriciopoppe/graph/blob/master/examples/operations.test.ts)
+- [undirected graph](https://github.com/mauriciopoppe/graph/blob/master/examples/undirected.test.ts)
+- [multigraph](https://github.com/mauriciopoppe/graph/blob/master/examples/multigraph.test.ts)
+- [multigraph (self loops)](https://github.com/mauriciopoppe/graph/blob/master/examples/multigraph-self.test.ts)
