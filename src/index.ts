@@ -8,7 +8,7 @@ const Events = {
   SET_NODE: 'setNode',
   REMOVE_NODE: 'removeNode',
   SET_EDGE: 'setEdge',
-  REMOVE_EDGE: 'removeEdge'
+  REMOVE_EDGE: 'removeEdge',
 }
 
 // node
@@ -70,15 +70,9 @@ export default class Graph extends EventEmitter {
    */
   constructor(opts: GraphOptions = {}) {
     super()
-    this._isDirected = opts.hasOwnProperty('directed')
-      ? Boolean(opts.directed)
-      : true
-    this._isMultigraph = opts.hasOwnProperty('multigraph')
-      ? Boolean(opts.multigraph)
-      : false
-    this._isCompound = opts.hasOwnProperty('compound')
-      ? Boolean(opts.compound)
-      : false
+    this._isDirected = opts.hasOwnProperty('directed') ? Boolean(opts.directed) : true
+    this._isMultigraph = opts.hasOwnProperty('multigraph') ? Boolean(opts.multigraph) : false
+    this._isCompound = opts.hasOwnProperty('compound') ? Boolean(opts.compound) : false
 
     this._nodes = new Map<N, any>()
     this._edges = new Map<E, any>()
@@ -215,15 +209,9 @@ export default class Graph extends EventEmitter {
     if (!parent) {
       parent = GRAPH_NODE
     } else {
-      for (
-        let ancestor: N | undefined = parent;
-        ancestor;
-        ancestor = this.parent(ancestor)
-      ) {
+      for (let ancestor: N | undefined = parent; ancestor; ancestor = this.parent(ancestor)) {
         if (ancestor === node) {
-          throw new Error(
-            `Setting ${parent} as parent of ${node} would create a cycle`
-          )
+          throw new Error(`Setting ${parent} as parent of ${node} would create a cycle`)
         }
       }
       this.setNode(parent)
@@ -241,7 +229,7 @@ export default class Graph extends EventEmitter {
 
   parent(node: N): N | undefined {
     if (this.isCompound()) {
-      const parent = this._parent.get(node);
+      const parent = this._parent.get(node)
       if (parent !== GRAPH_NODE) {
         return parent
       }
@@ -396,27 +384,21 @@ export default class Graph extends EventEmitter {
   edge(...args: Array<any>): E {
     const [v, w, name] = args
     const e =
-      args.length === 1
-        ? edgeObjToId(this.isDirected(), args[0] as Edge)
-        : edgeArgsToId(this.isDirected(), v, w, name)
+      args.length === 1 ? edgeObjToId(this.isDirected(), args[0] as Edge) : edgeArgsToId(this.isDirected(), v, w, name)
     return this._edges.get(e)
   }
 
   hasEdge(...args: Array<any>): boolean {
     const [v, w, name] = args
     const e =
-      args.length === 1
-        ? edgeObjToId(this.isDirected(), args[0] as Edge)
-        : edgeArgsToId(this.isDirected(), v, w, name)
+      args.length === 1 ? edgeObjToId(this.isDirected(), args[0] as Edge) : edgeArgsToId(this.isDirected(), v, w, name)
     return this._edges.has(e)
   }
 
   removeEdge(...args: Array<any>): Graph {
     let [v, w, name] = args
     const e =
-      args.length === 1
-        ? edgeObjToId(this.isDirected(), args[0] as Edge)
-        : edgeArgsToId(this.isDirected(), v, w, name)
+      args.length === 1 ? edgeObjToId(this.isDirected(), args[0] as Edge) : edgeArgsToId(this.isDirected(), v, w, name)
     const edge = this._edgeObjs.get(e)
     if (edge) {
       v = edge.v

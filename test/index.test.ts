@@ -370,7 +370,10 @@ describe('Graph', () => {
       g.setEdge('a', 'b')
       g.setEdge('b', 'c')
       const edges = [...g.edges()]
-      expect(edges).toEqual([{ v: 'a', w: 'b' }, { v: 'b', w: 'c' }])
+      expect(edges).toEqual([
+        { v: 'a', w: 'b' },
+        { v: 'b', w: 'c' },
+      ])
     })
   })
 
@@ -581,7 +584,7 @@ describe('Graph', () => {
       expect([...g.inEdges('b')]).toEqual([
         { v: 'a', w: 'b' },
         { v: 'a', w: 'b', name: 'bar' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
     })
 
@@ -596,7 +599,7 @@ describe('Graph', () => {
       expect([...g.inEdges('a', 'b')]).toEqual([])
       expect([...g.inEdges('b', 'a')]).toEqual([
         { v: 'a', w: 'b' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
     })
   })
@@ -622,7 +625,7 @@ describe('Graph', () => {
       expect([...g.outEdges('a')]).toEqual([
         { v: 'a', w: 'b' },
         { v: 'a', w: 'b', name: 'bar' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
     })
 
@@ -636,7 +639,7 @@ describe('Graph', () => {
       g.setEdge('z', 'b')
       expect([...g.outEdges('a', 'b')]).toEqual([
         { v: 'a', w: 'b' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
       expect([...g.outEdges('b', 'a')]).toEqual([])
     })
@@ -653,7 +656,7 @@ describe('Graph', () => {
       expect([...g.nodeEdges('a')]).toEqual([{ v: 'a', w: 'b' }])
       expect([...g.nodeEdges('b')]).toEqual([
         { v: 'a', w: 'b' },
-        { v: 'b', w: 'c' }
+        { v: 'b', w: 'c' },
       ])
       expect([...g.nodeEdges('c')]).toEqual([{ v: 'b', w: 'c' }])
     })
@@ -666,12 +669,12 @@ describe('Graph', () => {
       expect([...g.nodeEdges('a')]).toEqual([
         { v: 'a', w: 'b' },
         { v: 'a', w: 'b', name: 'bar' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
       expect([...g.nodeEdges('b')]).toEqual([
         { v: 'a', w: 'b' },
         { v: 'a', w: 'b', name: 'bar' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
     })
 
@@ -685,11 +688,11 @@ describe('Graph', () => {
       g.setEdge('z', 'b')
       expect([...g.nodeEdges('a', 'b')]).toEqual([
         { v: 'a', w: 'b' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
       expect([...g.nodeEdges('b', 'a')]).toEqual([
         { v: 'a', w: 'b' },
-        { v: 'a', w: 'b', name: 'foo' }
+        { v: 'a', w: 'b', name: 'foo' },
       ])
     })
   })

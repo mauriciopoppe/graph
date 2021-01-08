@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08d6cd09-366c-4eed-b92a-5f29cedbd647" name="Default Changelist" comment="" />
+    <list default="true" id="08d6cd09-366c-4eed-b92a-5f29cedbd647" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/index.test.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610137351402</updated>
-      <workItem from="1610137353021" duration="4037000" />
+      <workItem from="1610137353021" duration="4610000" />
     </task>
     <task id="LOCAL-00001" summary="upgrade libraries">
       <created>1610143886645</created>
@@ -59,7 +65,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610144540616</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ignore intellij files">
+      <created>1610146182252</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610146182253</updated>
+    </task>
+    <task id="LOCAL-00005" summary="use github workflows instead of travis">
+      <created>1610146217604</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610146217604</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -69,6 +89,8 @@
     <MESSAGE value="upgrade libraries" />
     <MESSAGE value="use node lts" />
     <MESSAGE value="use package-lock.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="use package-lock.json" />
+    <MESSAGE value="ignore intellij files" />
+    <MESSAGE value="use github workflows instead of travis" />
+    <option name="LAST_COMMIT_MESSAGE" value="use github workflows instead of travis" />
   </component>
 </project>
