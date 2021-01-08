@@ -1,37 +1,21 @@
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
-import uglify from 'rollup-plugin-uglify'
 
 const pkg = require('./package.json')
 
 export default [
   {
-    entry: `.compiled/index.js`,
-    targets: [
-      { dest: pkg.main, moduleName: 'graph', format: 'umd' },
-      { dest: pkg.module, format: 'es' }
+    input: `.compiled/index.js`,
+    output: [
+      { file: pkg.main, name: 'graph', format: 'umd', sourcemap: true },
+      { file: pkg.module, format: 'es', sourcemap: true }
     ],
-    sourceMap: true,
     external: [],
     plugins: [
       resolve(),
       commonjs(),
       sourceMaps()
-    ]
-  },
-  {
-    entry: `.compiled-es5/index.js`,
-    targets: [
-      { dest: pkg.browser, moduleName: 'graph', format: 'umd' },
-    ],
-    sourceMap: true,
-    external: [],
-    plugins: [
-      resolve(),
-      commonjs(),
-      sourceMaps(),
-      uglify(),
     ]
   }
 ]

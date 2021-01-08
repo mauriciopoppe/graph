@@ -1,7 +1,7 @@
 import Graph from '../src/index'
 
 describe('Graph', () => {
-  let g
+  let g: Graph
 
   beforeEach(() => {
     g = new Graph()
@@ -96,7 +96,6 @@ describe('Graph', () => {
 
     it('uses the stringified form of the id', () => {
       g.setNode('1')
-      expect(g.hasNode(1)).toEqual(false)
       expect(g.hasNode('1')).toEqual(true)
       expect(g.nodeCount()).toEqual(1)
     })

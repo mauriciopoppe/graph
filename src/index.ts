@@ -1,4 +1,4 @@
-import eventEmitter from 'eventemitter3'
+import { EventEmitter } from 'eventemitter3'
 
 const DEFAULT_EDGE_NAME = '\x00'
 const GRAPH_NODE = '\x00'
@@ -28,7 +28,7 @@ export interface Edge {
   name?: string
 }
 
-export default class Graph extends eventEmitter.EventEmitter {
+export default class Graph extends EventEmitter {
   /**
    * True if the graph is directed, see http://mathworld.wolfram.com/DirectedGraph.html
    * @default true
@@ -84,9 +84,9 @@ export default class Graph extends eventEmitter.EventEmitter {
     this._nodes = new Map<N, any>()
     this._edges = new Map<E, any>()
 
+    this._parent = new Map<N, N>()
+    this._children = new Map<N, Set<N>>()
     if (this._isCompound) {
-      this._parent = new Map<N, N>()
-      this._children = new Map<N, Set<N>>()
       this._children.set(GRAPH_NODE, new Set<N>())
     }
 
@@ -463,7 +463,7 @@ export default class Graph extends eventEmitter.EventEmitter {
     }
   }
 
-  *nodeEdges(v: N, w: N): IterableIterator<Edge> {
+  *nodeEdges(v: N, w?: N): IterableIterator<Edge> {
     for (let edge of this.inEdges(v, w)) {
       yield edge
     }
