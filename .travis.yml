@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - lts/*
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+notifications:
+  email: false
+
+script:
+  - npm run test
+  - npm run build
+after_success:
+  - npm run analyze
