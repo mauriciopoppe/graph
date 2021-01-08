@@ -1,7 +1,7 @@
 # Graph
 
 [![npm status](http://img.shields.io/npm/v/@mauriciopoppe/graph.svg)](https://www.npmjs.org/package/@mauriciopoppe/graph)
-[![Build Status](https://travis-ci.org/mauriciopoppe/graph.svg?branch=master)](https://travis-ci.org/mauriciopoppe/graph)
+[![Build Status](https://travis-ci.com/mauriciopoppe/graph.svg?branch=master)](https://travis-ci.com/mauriciopoppe/graph)
 [![dependency status](https://david-dm.org/mauriciopoppe/graph.svg)](https://david-dm.org/mauriciopoppe/graph)
 [![codecov](https://codecov.io/gh/mauriciopoppe/graph/branch/master/graph/badge.svg)](https://codecov.io/gh/mauriciopoppe/graph)
 
